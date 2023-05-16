@@ -1,0 +1,26 @@
+.login-main {
+    /* height: 100%; */
+}
+.login-img {
+    width: 40%;
+    /* height: 100%; */
+    object-fit: cover;
+    object-position: center;
+    
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.login-form-group button {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.login-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}

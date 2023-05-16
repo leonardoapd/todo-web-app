@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--dark-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+
+  --primary-color: #FF6B6B;
+  --secondary-color: #FFD166;
+  --tertiary-color: #06D6A0;
+  --ligth-background: #F7F7F8;
+  --dark-background: #242424;
+  --primary-text: #333333;
+  --secondary-text: #4F4F4F;
+  --shadow-color: rgba(0, 0, 0, 0.138);
+  --border-color: rgb(0, 0, 0);
+  --gray-color: #828282;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--primary-text);
+    background-color: var(--ligth-background);
+  }
+}

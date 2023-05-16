@@ -1,0 +1,42 @@
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group:focus-within label {
+    top: -0.6rem;
+    padding: 0 0.5rem;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.form-group label {
+    position: absolute;
+    background: var(--ligth-background);
+    transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    left: 0.8rem;
+    top: 0.7rem;
+    color: var(--gray-color);
+}
+
+.form-group input {
+    width: 100%;
+    background: transparent;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    filter: drop-shadow(0px 2px 2px var(--shadow-color));
+}
+
+.form-group .form-group-input:focus {
+    border: 1px solid var(--primary-color);
+}
+
+.filled {
+    top: -0.6rem !important;
+    padding: 0 0.5rem !important;
+    font-size: 12px !important;
+}
