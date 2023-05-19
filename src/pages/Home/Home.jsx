@@ -10,26 +10,32 @@ export default function Home() {
         navigate('/login');
     }
 
+    const goToRegister = () => {
+        navigate('/register');
+    }
+
+
     return (
         <>
-            <main className='main'>
+            <main className='app__main'>
                 <header className="home-container">
-                    <h1 className="title home-title">ToDo List App</h1>
+                    <h1 className="app__title home-title">ToDo List App</h1>
                 </header>
                 <figure>
                     <img className='home-img' src={images.checklist} alt='home' />
                 </figure>
                 <section className="home-buttons-container">
                     <button
-                        className="home-button button"
+                        className="home-button app__button"
                         onClick={goToLogin}
                     >
                         Login
                     </button>
                     <button
-                        className="home-button button"
+                        className="home-button app__button"
+                        onClick={goToRegister}
                     >
-                        Register
+                        Sign Up
                     </button>
                 </section>
             </main>

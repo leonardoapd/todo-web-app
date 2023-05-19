@@ -6,14 +6,27 @@
   margin: 0;
 }
 
-.title {
-  font-family: 'Zeyada', cursive;
-  font-size: 3rem;
+.app__title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.4rem;
   color: var(--primary-color);
   text-align: center;
 }
 
-.button {
+.app__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__img {
+  width: 60%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.app__button {
 
   width: 100%;
   padding: 0.8rem;
@@ -27,49 +40,60 @@
   filter: drop-shadow(0px 2px 2px var(--shadow-color));
 }
 
-.form {
+.login-register-anker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.app__form-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.app__form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
   gap: 1rem;
-  padding: 3rem;
-  padding-top: 1rem;
+  /* margin: 3rem; */
+  margin-top: 1rem;
 }
 
 .login-form-group {
   position: relative;
 }
 
-.form-group-input {
-  width: 100%;
-  background: transparent;
-  padding: 0.8rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  outline: none;
-  font-size: 1rem;
-  filter: drop-shadow(0px 2px 2px var(--shadow-color));
-}
+@media screen and (min-width: 768px) {
+  .app__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
 
-.form-group-label {
-  position: absolute;
-  background: var(--ligth-background);
-  transition: all 0.2s ease-in-out;
-  left: 0.8rem;
-  top: 0.7rem;
-  color: var(--gray-color);
-}
+  .app__img {
+    width: 40%;
+    margin: 0 3rem;
+  }
 
-.form-group-input:focus {
-  border: 1px solid var(--primary-color);
-}
+  .app__form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
 
-/* Moving the label to the top of the input once is focus */
-.form-group-input:focus-within label{
-  top: -0.5rem;
-  left: -0.8rem;
-  font-size: 0.8rem;
-  color: var(--primary-color);
+  .app__form {
+    width: 60%;
+    margin: 2rem;
+  }
 }
-

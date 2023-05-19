@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -25,8 +26,13 @@
   --primary-text: #333333;
   --secondary-text: #4F4F4F;
   --shadow-color: rgba(0, 0, 0, 0.138);
-  --border-color: rgb(0, 0, 0);
+  --border-color: rgba(0, 0, 0, 0.185);
   --gray-color: #828282;
+}
+
+body {
+  background-color: #ee5522;
+   
 }
 
 * {

@@ -1,0 +1,8 @@
+.signup-title {
+    color: var(--tertiary-color);
+}
+
+.signup-form-group button {
+    background-color: var(--tertiary-color);
+    color: #fff;
+}

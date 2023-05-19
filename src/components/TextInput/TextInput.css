@@ -1,3 +1,7 @@
+:root {
+    --input-border-color: #06D6A0;
+}
+
 .form-group {
     position: relative;
     display: flex;
@@ -8,7 +12,7 @@
     top: -0.6rem;
     padding: 0 0.5rem;
     font-size: 12px;
-    color: var(--primary-color);
+    color: var(--gray-color);
 }
 
 .form-group label {
@@ -32,7 +36,7 @@
 }
 
 .form-group .form-group-input:focus {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--input-border-color);
 }
 
 .filled {

@@ -6,24 +6,22 @@ import './Login.css';
 export default function Login() {
     return (
         <>
-            <main className='main'>
-                <figure>
-                    <img className='login-img' src={images.pana} alt='login' />
-                </figure>
-                <section className="login-container">
-                    <h1 className="title">Welcome back!</h1>
-                    <form className="login-form form">
-                        <TextInput label="Email"></TextInput>
+            <main className='app__main login-main'>
+                <img className='app__img' src={images.pana} alt='login' />
+                <section className="app__form-container">
+                    <h1 className="app__title">Welcome back!</h1>
+                    <form className="app__form">
+                        <TextInput label="Email" type="email"></TextInput>
                         <TextInput label="Password" type="password"></TextInput>
                         <div className="login-form-group">
-                            <button className="button" type="submit">Login</button>
+                            <button className="app__button" type="submit">Login</button>
                         </div>
                     </form>
+                    <aside className="login-register-anker">
+                        <Link to='/register'>Don&rsquo;t have an account? Sign Up</Link>
+                    </aside>
                 </section>
 
-                <section className="login-register">
-                    <Link to='/register'>Don&rsquo;t have an account? Register</Link>
-                </section>
             </main>
         </>
     );
