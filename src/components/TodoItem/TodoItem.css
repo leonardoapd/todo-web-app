@@ -1,0 +1,58 @@
+.app__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    align-items: stretch;
+    gap: 4px;
+}
+
+li {
+    list-style: none;
+}
+
+.app__todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    gap: 8px;
+}
+
+label:focus {
+    border: 1px solid var(--primary-color);
+}
+
+.app__todo-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.app__checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.app__button {
+    width: 50%;
+}
+
+[contenteditable="true"] {
+    border: 1px solid var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.5s ease;
+}

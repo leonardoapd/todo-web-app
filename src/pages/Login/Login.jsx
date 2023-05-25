@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { validateForm } from '../../services/inputs-validation';
-import { login } from '../../services/api-service';
+import { login } from '../../services/http-client-service';
 import { images } from '../../constants/index';
 import { UserCredentials } from '../../models/user-credentials';
 import TextInput from '../../components/TextInput/TextInput';

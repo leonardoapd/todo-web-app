@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { images } from "../../constants/index";
-import { signup } from "../../services/api-service";
+import { signup } from "../../services/http-client-service";
 import { validateForm } from "../../services/inputs-validation";
 import TextInput from "../../components/TextInput/TextInput";
 import "./SignUp.css";

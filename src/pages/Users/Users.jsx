@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUsers } from '../../services/api-service';
+import { getUsers } from '../../services/http-client-service';
 import { useNavigate } from 'react-router-dom';
 
 export default function Users() {

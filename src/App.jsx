@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
 import Users from './pages/Users/Users';
 import authInterceptor from './helpers/auth-interceptor';
+import TodoList from './components/TodoList/TodoList';
 
 const router = createBrowserRouter([
   // List of routes
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: '/users',
     element: <Users />,
   },
+  {
+    path: '/todos',
+    element: <TodoList />,
+  }
 ])
 
 
