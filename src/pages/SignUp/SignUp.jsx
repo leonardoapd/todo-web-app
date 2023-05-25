@@ -1,18 +1,44 @@
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { images } from "../../constants/index";
+import { signup } from "../../services/api-service";
+import { validateForm } from "../../services/inputs-validation";
 import TextInput from "../../components/TextInput/TextInput";
 import "./SignUp.css";
 
 export default function SignUp() {
 
-    const signUp = (e) => {
+    const [formValues, setFormValues] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+    const [isValid, setIsValid] = useState(false);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleChange = (newValue, e) => {
+        const { name } = e.target;
+        setFormValues({ ...formValues, [name]: newValue });
+
+        //Validating the form
+        setIsValid(validateForm());
+
+    }
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('sign up');
 
-        // Get the values from the form
+        // Uncomment the next line to see the form values in the console
+        // console.log("Form values", formValues);
 
-        // Validate the values
-        // Send the values to the backend
+        signup(formValues).then((response) => {
+            // Uncomment the next line to see the response from the server
+            // console.log("Response", response);
+            navigate('/login');
+        }
+        ).catch((error) => {
+            // Uncomment the next line to see the error message in the console
+            // console.log("Error", error);
+            setError("Your email is already registered. Please try logging in.");
+        });
     }
 
     return (
@@ -23,16 +49,34 @@ export default function SignUp() {
 
                 <section className="app__form-container">
                     <h1 className="app__title signup-title">Create an account</h1>
-                    <form className="app__form">
-                        <TextInput label="Name"></TextInput>
-                        <TextInput label="Email" type="email"></TextInput>
-                        <TextInput label="Password" type="password"></TextInput>
+                    <form className="app__form" onSubmit={handleSubmit}>
+                        <TextInput
+                            label="Name"
+                            value={formValues.name}
+                            name="name"
+                            onChange={handleChange}
+                            type="text" />
+                        <TextInput
+                            label="Email"
+                            value={formValues.email}
+                            name="email"
+                            onChange={handleChange}
+                            type="email" />
+                        <TextInput
+                            label="Password"
+                            value={formValues.password}
+                            name="password"
+                            onChange={handleChange}
+                            type="password" />
                         <TextInput
                             label="Confirm Password"
-                            type="password"
-                        ></TextInput>
+                            value={formValues.confirmPassword}
+                            name="confirmPassword"
+                            onChange={handleChange}
+                            type="password" />
+                        {error && <p className="form-group-error">{error}</p>}
                         <div className="signup-form-group">
-                            <button className="app__button" type="submit" onClick={signUp}>
+                            <button className="app__button" type="submit" disabled={!isValid}>
                                 Sign Up
                             </button>
                         </div>

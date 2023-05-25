@@ -1,42 +1,26 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import { validateInput } from '../../services/inputs-validation';
 import './TextInput.css';
 
-export default function TextInput({ type = 'text', label }) {
+export default function TextInput({ label, type, name, onChange }) {
+
     const [value, setValue] = useState('');
-    const [isValid, setIsValid] = useState(false);
+    const [error, setError] = useState('');
 
-    const onChange = (event) => {
-        setValue(event.target.value);
+    const handleChange = (e) => {
+        // Destructuring the event object to get the name and value of the input
+        const { name, value } = e.target;
+        // Updating the state with the new value
+        setValue(value);
+        // Validating the input value and setting the error message
+        const error = validateInput(name, value);
+        setError(error);
 
-        // Validation usign regex and JSON schema
-        const emailRegex = /\S+@\S+\.\S+/;
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-        const textRegex = /^[a-zA-Z]+$/;
-
-        const validation = {
-            email: emailRegex.test(event.target.value),
-            password: passwordRegex.test(event.target.value),
-            text: textRegex.test(event.target.value),
-        };
-
-        setIsValid(validation[type]);
-
-        // if (type === 'email') {
-        //     const emailRegex = /\S+@\S+\.\S+/;
-        //     const isValid = emailRegex.test(event.target.value);
-        //     console.log(isValid);
-        // } else if (type === 'password') {
-        //     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-        //     const isValid = passwordRegex.test(event.target.value);
-        //     console.log(isValid);
-        // } else if (type === 'text') {
-        //     const textRegex = /^[a-zA-Z]+$/;
-        //     const isValid = textRegex.test(event.target.value);
-        //     console.log(isValid);
-        // } else {
-        //     console.log('No validation');
-        // }
+        // Calling the onChange function if it exists and passing the value and event object
+        if (typeof onChange === 'function') {
+            onChange(value, e);
+        }
     }
 
     return (
@@ -44,16 +28,18 @@ export default function TextInput({ type = 'text', label }) {
             <div className="form-group">
                 <input
                     className="form-group-input"
+                    name={name}
                     type={type}
                     id={label}
                     value={value}
-                    onChange={onChange}
+                    onChange={handleChange}
                     // Using css var to change the color of the border
-                    style={{ '--input-border-color': isValid ? '#06D6A0' : '#FF6B6B' }}
+                    style={{ '--input-border-color': error ? '#FF6B6B' : '#06D6A0' }}
                 />
                 <label className={value && "filled"} htmlFor={label}>
                     {label}
                 </label>
+                {error && <p className="form-group-error">{error}</p>}
             </div>
         </>
     );
