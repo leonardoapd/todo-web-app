@@ -1,0 +1,26 @@
+section.app__todo-creator form.app__form {
+    display: flex;
+    flex-direction: row;
+}
+
+section.app__todo-creator form.app__form button[type="submit"] {
+    width: 35%;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+
+    section.app__todo-creator form.app__form  {
+        width: 100%;
+        margin: 0;
+    }
+
+    section.app__todo-creator form.app__form button[type="submit"] {
+        width: 50%
+    }
+
+    section.app__todo-creator form.app__form .form-group {
+        width: 100%;
+    }
+}
