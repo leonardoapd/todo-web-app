@@ -33,7 +33,7 @@ export default function TodoList() {
     getTodos()
       .then((response) => {
         setTodos(response.data);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((_error) => {
         // Uncomment the next line to see the error message in the console
@@ -52,9 +52,9 @@ export default function TodoList() {
     <>
       <section className="app__container">
         <TodoCreator onUpdate={handleUpdate} />
-        {isLoading ? (
+        {/* {isLoading ? (
           <div>Loading...</div>
-        ) : (
+        ) : ( */}
           <ul className="app__todo-items">
             {todos.map((todo) => (
               <ToDoItem
@@ -66,7 +66,7 @@ export default function TodoList() {
               />
             ))}
           </ul>
-        )}
+        {/* )} */}
       </section>
     </>
   );

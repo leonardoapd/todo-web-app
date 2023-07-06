@@ -14,7 +14,7 @@ export default function Users() {
       .catch(() => {
         // Uncomment the next line to see the error message in the console
         // console.log("Error", error);
-        navigate("/login");
+        navigate("/");
       });
   }, [navigate]);
 

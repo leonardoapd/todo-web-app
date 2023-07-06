@@ -1,7 +1,5 @@
 #root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
   height: 100vh;
   margin: 0;
 }

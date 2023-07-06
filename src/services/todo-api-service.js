@@ -33,7 +33,6 @@ export function editTodo(id, value) {
 }
 
 export function deleteTodo(id) {
-  console.log("Deleting todo with id: ", id);
   // pass the data in the request body to the API
   return axios.delete(API_URL + "todo/" + id);
 }
