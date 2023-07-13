@@ -1,0 +1,52 @@
+.user-options {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  background-color: #f3f6fc;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 12px;
+  top: 56px;
+  right: 16px;
+  border: 1px solid rgb(128 128 128 / 20%);
+  gap: 4px;
+}
+
+.user-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.change-img__button {
+  position: absolute;
+  left: 54px;
+  top: 54px;
+  border: 1px solid rgb(128 128 128 / 20%);
+  background: white;
+  color: blue;
+  border-radius: 50%;
+  display: flex;
+  cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  background-color: white;
+  gap: 1rem;
+  padding: 12px;
+  border-radius: 12px 12px 0 0;
+}
+
+.logout__button {
+    display: flex;
+    background-color: white;
+    border: none;
+    border-radius: 0 0 12px 12px;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}

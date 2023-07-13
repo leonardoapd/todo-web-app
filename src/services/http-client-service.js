@@ -1,5 +1,5 @@
 import axios from "axios";
-import { isTokenExpired } from "./token-service";
+import { extractEmailFromToken } from "./token-service";
 
 // const API_URL = "http://localhost:8085/api/v1/";
 const API_URL = "http://localhost:5053/api/auth/";
@@ -69,4 +69,9 @@ export function logout() {
 
 export function getUsers() {
   return axios.get(API_URL + "users");
+}
+
+export function getUser() {
+  const email = extractEmailFromToken();
+  return axios.get(API_URL + "me/" + email);
 }

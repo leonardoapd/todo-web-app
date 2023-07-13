@@ -45,9 +45,6 @@ export default function Login() {
 
         // Getting the error message from the server
         const errorMessage = error.response.data.code;
-
-        console.log("Error message", errorMessage);
-
         // Setting the error message to display
         setError(errorMessages[errorMessage] || errorMessages[500]);
       });

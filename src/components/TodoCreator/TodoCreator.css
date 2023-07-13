@@ -5,7 +5,7 @@ section.app__todo-creator form.app__form {
 
 section.app__todo-creator form.app__form button[type="submit"] {
     width: 35%;
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
     color: #fff;
 }
 
