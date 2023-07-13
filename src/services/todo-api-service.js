@@ -2,7 +2,7 @@ import axios from "axios";
 import { extractEmailFromToken } from "./token-service";
 
 // const API_URL = "http://localhost:8085/api/v1/";
-const API_URL = "http://localhost:5053/api/";
+const API_URL =  import.meta.env.VITE_API_URL + "api/";
 
 export async function getTodos() {
   // pass the data in the request body to the API

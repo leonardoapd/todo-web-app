@@ -1,32 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Hubballi&family=Press+Start+2P&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Sacramento:regular);
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 60px;
-    background-color: #fff;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background-color: #fff;
+  filter: drop-shadow(0px -2px 4px rgba(0, 0, 0, 0.25));
 
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 100;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
-.navbar-logo img {
-    height: 50px;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  font-family: "Press Start 2P", cursive;
+  /* font-family: "Sacramento", cursive; */
+  font-variation-settings: "wdth" 120, "wght" 700;
+  margin-left: 16px;
+  gap: 8px;
 }
 
 .navbar-title {
-    font-size: 0.8rem;
-    font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 600;
 
-    color: var(--primary-color);
-    font-family: "Press Start 2P", cursive;
+  color: var(--primary-color);
+  font-family: "Press Start 2P", cursive;
+}
+
+.navbar-options {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  /* width: 30vw; */
+  list-style: none;
+  gap: 8px;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.navbar-logout {
+  width: 30%;
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--ligth-background);
+}
+
+.navbar-user-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-user-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-family: "Press Start 2P", cursive;
 }
 
 a i.material-symbols-outlined {
-    font-size: 40px;
-    color: var(--primary-color);
+  font-size: 42px !important;
+  color: var(--primary-color);
+  font-weight: 900;
 }

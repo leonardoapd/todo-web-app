@@ -1,8 +1,8 @@
 import axios from "axios";
-import { isTokenExpired } from "./token-service";
+import { extractEmailFromToken } from "./token-service";
 
 // const API_URL = "http://localhost:8085/api/v1/";
-const API_URL = "http://localhost:5053/api/auth/";
+const API_URL = import.meta.env.VITE_API_URL + "api/auth/";
 
 const errorMessages = {
   401: "Unauthorized",
@@ -69,4 +69,9 @@ export function logout() {
 
 export function getUsers() {
   return axios.get(API_URL + "users");
+}
+
+export function getUser() {
+  const email = extractEmailFromToken();
+  return axios.get(API_URL + "me/" + email);
 }
