@@ -49,7 +49,7 @@ const TextInput = forwardRef(
             // Using css var to change the color of the border
             style={{ "--input-border-color": error ? "#FF6B6B" : "#06D6A0" }}
           />
-          <label className={value && "filled"} htmlFor={label}>
+          <label className={value && "filled"} htmlFor={label.replace(/\s+/g, "-").toLowerCase()}>
             {label}
           </label>
           {error && <p className="form-group-error">{error}</p>}

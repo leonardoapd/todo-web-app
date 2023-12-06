@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { images } from "../../constants/index";
-import { signup } from "../../services/http-client-service";
+// import { signup } from "../../services/http-client-service";
 import { validateForm } from "../../services/inputs-validation";
 import TextInput from "../../components/TextInput/TextInput";
 import "./SignUp.css";
@@ -87,7 +87,7 @@ export default function SignUp() {
             />
             {error && <p className="form-group-error">{error}</p>}
             <div className="signup-form-group">
-              <button className="app__button" type="submit" disabled={!isValid}>
+            <button className={`app__button ${!isValid && "button__disabled"}`} disabled={!isValid} type="submit">
                 Sign Up
               </button>
             </div>

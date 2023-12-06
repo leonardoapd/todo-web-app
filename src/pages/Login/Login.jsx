@@ -1,14 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validateForm } from "../../services/inputs-validation";
-import { login } from "../../services/http-client-service";
+import { login } from "../../services/user-services";
 import { images } from "../../constants/index";
 import { UserCredentials } from "../../models/user-credentials";
 import TextInput from "../../components/TextInput/TextInput";
 import "./Login.css";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
-  const [formValues, setFormValues] = useState(new UserCredentials());
+  const [formValues, setFormValues] = useState(new UserCredentials('', ''));
+  const { handleLogin } = useAuth();
   const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -32,12 +34,14 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Uncomment the next line to see the form values in the console
     // console.log("Form values", formValues);
 
     login(formValues)
       .then(() => {
         // Go to users page
-        navigate("/todos");
+        handleLogin();
+        navigate("/mytodolist");
       })
       .catch(() => {
         // Uncomment the next line to see the error message in the console
@@ -75,13 +79,13 @@ export default function Login() {
             />
             {error && <p className="form-group-error">{error}</p>}
             <div className="login-form-group">
-              <button className="app__button" type="submit" disabled={!isValid}>
+              <button className={`app__button ${!isValid && "button__disabled"}`} disabled={!isValid} type="submit">
                 Login
               </button>
             </div>
           </form>
           <aside className="login-register-anker">
-            <Link to="/register">Don&rsquo;t have an account? Sign Up</Link>
+            <Link to="/signup">Don&rsquo;t have an account? Sign Up</Link>
           </aside>
         </section>
       </main>

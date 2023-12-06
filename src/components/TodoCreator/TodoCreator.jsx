@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRef } from "react";
 import TextInput from "../TextInput/TextInput";
-import { addTodo } from "../../services/todo-api-service";
+import { addTodo } from "../../services/todo-service";
 import "./TodoCreator.css";
 
 export default function TodoCreator({ onUpdate }) {

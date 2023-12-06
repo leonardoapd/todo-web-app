@@ -28,6 +28,8 @@
   --dark-background: #242424;
   --primary-text: #333333;
   --secondary-text: #4F4F4F;
+  --disabled-text: #BDBDBD;
+  --disabled-color: #E0E0E0;
   --shadow-color: rgba(0, 0, 0, 0.138);
   --border-color: rgba(0, 0, 0, 0.185);
   --gray-color: #828282;

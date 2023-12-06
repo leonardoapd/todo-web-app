@@ -6,7 +6,7 @@ import {
   completeTodo,
   editTodo,
   deleteTodo,
-} from "../../services/todo-api-service";
+} from "../../services/todo-service";
 
 export default function TodoItem({ id, item, setItem, onUpdate }) {
   const [contentEditable, setContentEditable] = useState(false);
