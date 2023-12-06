@@ -23,14 +23,14 @@ export default function Home() {
           <figure>
             <img className="home-img" src={images.checklist} alt="home" />
           </figure>
-          <section className="home-buttons-container">
+          {/* <section className="home-buttons-container">
             <button className="home-button app__button" onClick={goToLogin}>
               Login
             </button>
             <button className="home-button app__button" onClick={goToRegister}>
               Sign Up
             </button>
-          </section>
+          </section> */}
         </section>
       </main>
     </>

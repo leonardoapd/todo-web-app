@@ -10,7 +10,7 @@ export function UserProvider({ children }) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		getUserInfo();
+		// getUserInfo();
 	}, []);
 
 	const editUser = (newUser) => {

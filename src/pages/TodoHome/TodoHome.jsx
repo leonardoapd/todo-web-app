@@ -16,7 +16,6 @@ export default function TodoHome() {
 
 	return (
 		<>
-			<Navbar user={user} />
 			{!loading && user && <TodoList user={user} />}
 		</>
 	);

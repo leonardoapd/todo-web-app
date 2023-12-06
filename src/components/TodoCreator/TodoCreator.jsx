@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useRef } from "react";
 import TextInput from "../TextInput/TextInput";
 import { addTodo } from "../../services/todo-service";
+import { useUser } from "../../context/UserContext";
 import "./TodoCreator.css";
 
 export default function TodoCreator({ onUpdate }) {
   const [todo, setTodoText] = useState("");
+  const { getUserEmail } = useUser();
   const todoInputRef = useRef(null);
 
   const handleChange = (newValue) => {
@@ -18,6 +20,7 @@ export default function TodoCreator({ onUpdate }) {
     // Preventing the default behavior of the form
     e.preventDefault();
 
+    const userEmail = getUserEmail();
     const value = todo;
 
     // Checking if the input field is empty or not before submitting the form
@@ -26,14 +29,14 @@ export default function TodoCreator({ onUpdate }) {
       return;
     }
     // Calling the addTodo function from the todo-api-service
-    await addTodo(value)
+    await addTodo(value, userEmail)
       .then((response) => {
         // Updating the state with the new value
         if (!response) {
           console.log("Todo not added");
           return;
         }
-        if (response.status === 201) {
+        if (response.status === 200) {
           console.log("Todo added successfully");
         }
       })
