@@ -2,9 +2,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { images } from "../../constants/index";
-// import { signup } from "../../services/http-client-service";
+import { signup } from "../../services/user-services";
 import { validateForm } from "../../services/inputs-validation";
 import TextInput from "../../components/TextInput/TextInput";
+import { errorMessages } from "../../constants/index";
 import "./SignUp.css";
 
 export default function SignUp() {
@@ -38,10 +39,13 @@ export default function SignUp() {
         // console.log("Response", response);
         navigate("/login");
       })
-      .catch((_error) => {
+      .catch((error) => {
         // Uncomment the next line to see the error message in the console
         // console.log("Error", error);
-        setError("Your email is already registered. Please try logging in.");
+        // Getting the error message from the server
+        const errorMessage = error.response.status;
+        // Setting the error message to display
+        setError(errorMessages[errorMessage] || ErrorMessages[500]);
       });
   };
 

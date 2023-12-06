@@ -7,6 +7,7 @@ import { UserCredentials } from "../../models/user-credentials";
 import TextInput from "../../components/TextInput/TextInput";
 import "./Login.css";
 import { useAuth } from "../../context/AuthContext";
+import { errorMessages } from "../../constants/index";
 
 export default function Login() {
   const [formValues, setFormValues] = useState(new UserCredentials('', ''));
@@ -14,14 +15,6 @@ export default function Login() {
   const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  // Error messages depending on the error code
-  const errorMessages = {
-    401: "Your email or password is incorrect. Please try again.",
-    403: "Your email is not verified.",
-    404: "Your email is not registered. Please sign up.",
-    500: "There was an error. Please try again later.",
-  };
 
   const handleChange = (newValue, e) => {
     const { name } = e.target;
@@ -43,12 +36,11 @@ export default function Login() {
         handleLogin();
         navigate("/mytodolist");
       })
-      .catch(() => {
+      .catch((error) => {
         // Uncomment the next line to see the error message in the console
         // console.log("Error", error);
-
         // Getting the error message from the server
-        const errorMessage = error.response.data.code;
+        const errorMessage = error.response.status;
         // Setting the error message to display
         setError(errorMessages[errorMessage] || errorMessages[500]);
       });

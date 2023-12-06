@@ -14,7 +14,8 @@ export const login = async (userCredentials) => {
 	}
 };
 
-export const register = async (userCredentials) => {
+export const signup = async (userCredentials) => {
+	console.log('userCredentials', userCredentials);
 	try {
 		await apiClient.post('/auth/signup', userCredentials);
 	} catch (error) {
