@@ -2,11 +2,14 @@
 import { useState } from "react";
 import { useRef } from "react";
 import TextInput from "../TextInput/TextInput";
-import { addTodo } from "../../services/todo-api-service";
+import { addTodo } from "../../services/todo-service";
+import { useUser } from "../../context/UserContext";
 import "./TodoCreator.css";
 
 export default function TodoCreator({ onUpdate }) {
   const [todo, setTodoText] = useState("");
+  const [error, setError] = useState("");
+  const { getUserEmail } = useUser();
   const todoInputRef = useRef(null);
 
   const handleChange = (newValue) => {
@@ -18,23 +21,27 @@ export default function TodoCreator({ onUpdate }) {
     // Preventing the default behavior of the form
     e.preventDefault();
 
+    const userEmail = getUserEmail();
     const value = todo;
 
     // Checking if the input field is empty or not before submitting the form
     if (value === "") {
-      console.log("Please enter a todo");
+      // console.log("Please enter a todo");
+      setError("Please enter a todo");
       return;
     }
     // Calling the addTodo function from the todo-api-service
-    await addTodo(value)
+    await addTodo(value, userEmail)
       .then((response) => {
         // Updating the state with the new value
         if (!response) {
-          console.log("Todo not added");
+          // console.log("Todo not added");
+          setError("Todo not added");
           return;
         }
-        if (response.status === 201) {
-          console.log("Todo added successfully");
+        if (response.status === 200) {
+          // console.log("Todo added successfully");
+          setError("");
         }
       })
       .catch((error) => {
@@ -67,6 +74,7 @@ export default function TodoCreator({ onUpdate }) {
             Add
           </button>
         </form>
+        {error && <p className="form-group-error">{error}</p>}
       </section>
     </>
   );

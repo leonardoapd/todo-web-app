@@ -1,17 +1,12 @@
-import logo from "../assets/logo.png";
-import note_list from "../assets/note_list.gif";
-import pana from "../assets/note_list_pana.png";
-import checklist from "../assets/checklist.png";
-import checklist_2 from "../assets/checklist-bro.png";
-import user from "../assets/user.png";
+const images = {};
 
-const images = {
-  logo,
-  note_list,
-  pana,
-  checklist,
-  checklist_2,
-  user,
-};
+// Import all images in ../assets/images/skills/*.png or svg
+const imageContext = import.meta.globEager('../assets/images/*.png');
+
+// Add all images to images object
+Object.keys(imageContext).forEach((image) => {
+    const imageName = image.split('/').pop().split('.')[0];
+    images[imageName] = imageContext[image].default;
+});
 
 export default images;

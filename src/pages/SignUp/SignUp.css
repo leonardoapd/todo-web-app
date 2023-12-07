@@ -1,8 +1,8 @@
-.signup-title {
-    color: var(--tertiary-color);
+.app__main .signup-title {
+    color: var(--secondary-color);
 }
 
 .signup-form-group button {
-    background-color: var(--tertiary-color);
+    background-color: var(--secondary-color);
     color: #fff;
 }

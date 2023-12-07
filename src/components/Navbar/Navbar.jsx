@@ -1,82 +1,95 @@
-import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
-import { images } from "../../constants";
-import { logout, getUser } from "../../services/http-client-service";
-import { useMobileDetection } from "../../helpers/custom-hooks";
-import { useEffect } from "react";
-import UserOptions from "../UserOptions/UserOptions";
-import "./Navbar.css";
+import { useNavigate, Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { images } from '../../constants';
+import { useMobileDetection } from '../../helpers/custom-hooks';
+import { useUser } from '../../context/UserContext';
+import { logout } from '../../services/user-services';
+import { useAuth } from '../../context/AuthContext';
+import { removeToken } from '../../utils/token-helper';
+import './Navbar.css';
+import UserOptions from '../UserOptions/UserOptions';
 
 export default function Navbar() {
-  const navigate = useNavigate();
-  const [showUserOptions, setShowUserOptions] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+	const navigate = useNavigate();
+	const { handleLogout: onLogout, isLoggedIn } = useAuth();
+	const [showUserOptions, setShowUserOptions] = useState(false);
+	const { user, getUserInfo } = useUser();
 
-  useEffect(() => {
-    getUser()
-      .then((response) => {
-        setUserName(response.data.name);
-        setUserEmail(response.data.email);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+	const handleLogout = async (e) => {
+		e.preventDefault();
+		await logout().then(() => {
+			onLogout();
+			removeToken();
+			setShowUserOptions(false);
+			navigate('/login');
+		});
+	};
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    // Call the logout service to invalidate the token
-    logout();
-    // Go to login page
-    navigate("/login");
-  };
+	const toggleUserOptions = () => {
+		setShowUserOptions(!showUserOptions);
+	};
 
-  const toggleUserOptions = (e) => {
-    e.preventDefault();
+	const closeUserOptions = () => {
+		setShowUserOptions(false);
+	};
 
-    setShowUserOptions(!showUserOptions);
-  };
+	const isMobile = useMobileDetection();
 
-  const isMobile = useMobileDetection();
+	// Agrega useRef para obtener una referencia al contenedor principal del Navbar
+	const navbarRef = useRef(null);
 
-  return (
-    <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-logo">
-          {/* <a className="navbar-logo"> */}
-          <i className="material-symbols-outlined">task_alt</i>
-          {/* </a> */}
-          TODO LIST
-        </Link>
+	// Agrega useEffect para añadir un manejador de eventos global que escucha clics fuera de UserOptions
+	useEffect(() => {
+		if(isLoggedIn) {
+			getUserInfo();
+		}
+		const handleClickOutside = (event) => {
+			if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+				closeUserOptions();
+			}
+		};
 
-        {/* <div className="navbar-options"> */}
-        <a
-          className="navbar-user"
-          aria-label={"User options:" + userName}
-          href="#"
-          onClick={toggleUserOptions}
-        >
-          <img className="navbar-user-img" src={images.user} alt="user" />
-          {/* <p className="navbar-user-name">Hi {userName}!</p> */}
-        </a>
-        {/* <button className="navbar-logout app__button" onClick={handleLogout}>
-            {isMobile ? (
-              <i className="material-symbols-outlined">logout</i>
-            ) : (
-              "Logout"
-            )}
-          </button> */}
+		document.addEventListener('click', handleClickOutside);
 
-        {/* </div> */}
-        {showUserOptions && (
-          <UserOptions
-            userName={userName}
-            userEmail={userEmail}
-            handleLogout={handleLogout}
-          />
-        )}
-      </nav>
-    </>
-  );
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, [navbarRef, isLoggedIn]);
+
+	return (
+		<>
+			<nav ref={navbarRef} className='navbar'>
+				<Link to='/' className='navbar-logo'>
+					<i className='material-symbols-outlined'>task_alt</i>
+					Tasky
+				</Link>
+
+				{!isLoggedIn && (
+					<div className='navbar-links'>
+						<Link to='/login' className='navbar-link app__button primary-button'>
+							Login
+						</Link>
+						<Link to='/signup' className='navbar-link app__button secondary-button'>
+							Sign up
+						</Link>
+					</div>
+				)}
+
+				{isLoggedIn && (
+					<a
+						className='navbar-user'
+						aria-label={'User options:' + user?.name}
+						href='#'
+						onClick={toggleUserOptions}
+					>
+						<img className='navbar-user-img' src={images.user} alt='user' />
+					</a>
+				)}
+
+				{showUserOptions && (
+					<UserOptions userName={user?.name} userEmail={user?.email} handleLogout={handleLogout} />
+				)}
+			</nav>
+		</>
+	);
 }

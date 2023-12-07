@@ -2,9 +2,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { images } from "../../constants/index";
-import { signup } from "../../services/http-client-service";
+import { signup } from "../../services/user-services";
 import { validateForm } from "../../services/inputs-validation";
 import TextInput from "../../components/TextInput/TextInput";
+import { errorMessages } from "../../constants/index";
 import "./SignUp.css";
 
 export default function SignUp() {
@@ -38,17 +39,20 @@ export default function SignUp() {
         // console.log("Response", response);
         navigate("/login");
       })
-      .catch((_error) => {
+      .catch((error) => {
         // Uncomment the next line to see the error message in the console
         // console.log("Error", error);
-        setError("Your email is already registered. Please try logging in.");
+        // Getting the error message from the server
+        const errorMessage = error.response.status;
+        // Setting the error message to display
+        setError(errorMessages[errorMessage] || ErrorMessages[500]);
       });
   };
 
   return (
     <>
       <main className="app__main">
-        <img className="app__img" src={images.checklist_2} alt="signup" />
+        <img className="app__img" src={images['signup']} alt="signup" />
 
         <section className="app__form-container">
           <h1 className="app__title signup-title">Create an account</h1>
@@ -87,7 +91,7 @@ export default function SignUp() {
             />
             {error && <p className="form-group-error">{error}</p>}
             <div className="signup-form-group">
-              <button className="app__button" type="submit" disabled={!isValid}>
+            <button className={`app__button ${!isValid && "button__disabled"}`} disabled={!isValid} type="submit">
                 Sign Up
               </button>
             </div>
