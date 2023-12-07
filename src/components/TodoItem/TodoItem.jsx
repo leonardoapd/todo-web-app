@@ -111,7 +111,7 @@ export default function TodoItem({ id, item, setItem, onUpdate }) {
           className={
             item.isCompleted ? "app__todo-label done" : "app__todo-label"
           }
-          htmlFor={contentEditable ? undefined : id}
+          htmlFor={contentEditable ? undefined : "checkbox-" + id}
           contentEditable={contentEditable}
           suppressContentEditableWarning
           onClick={() => setContentEditable(true)}

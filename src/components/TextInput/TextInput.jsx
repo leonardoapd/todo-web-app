@@ -48,6 +48,7 @@ const TextInput = forwardRef(
             onChange={handleChange}
             // Using css var to change the color of the border
             style={{ "--input-border-color": error ? "#FF6B6B" : "#06D6A0" }}
+            autoComplete="off"
           />
           <label className={value && "filled"} htmlFor={label.replace(/\s+/g, "-").toLowerCase()}>
             {label}
