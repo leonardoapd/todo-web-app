@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <>
       <main className="app__main login-main">
-        <img className="app__img" src={images.pana} alt="login" />
+        <img className="app__img" src={images['login']} alt="login" />
         <section className="app__form-container">
           <h1 className="app__title">Welcome back!</h1>
           <form className="app__form" onSubmit={handleSubmit}>

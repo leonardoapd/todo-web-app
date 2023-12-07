@@ -8,6 +8,7 @@ import "./TodoCreator.css";
 
 export default function TodoCreator({ onUpdate }) {
   const [todo, setTodoText] = useState("");
+  const [error, setError] = useState("");
   const { getUserEmail } = useUser();
   const todoInputRef = useRef(null);
 
@@ -25,7 +26,8 @@ export default function TodoCreator({ onUpdate }) {
 
     // Checking if the input field is empty or not before submitting the form
     if (value === "") {
-      console.log("Please enter a todo");
+      // console.log("Please enter a todo");
+      setError("Please enter a todo");
       return;
     }
     // Calling the addTodo function from the todo-api-service
@@ -33,11 +35,13 @@ export default function TodoCreator({ onUpdate }) {
       .then((response) => {
         // Updating the state with the new value
         if (!response) {
-          console.log("Todo not added");
+          // console.log("Todo not added");
+          setError("Todo not added");
           return;
         }
         if (response.status === 200) {
-          console.log("Todo added successfully");
+          // console.log("Todo added successfully");
+          setError("");
         }
       })
       .catch((error) => {
@@ -70,6 +74,7 @@ export default function TodoCreator({ onUpdate }) {
             Add
           </button>
         </form>
+        {error && <p className="form-group-error">{error}</p>}
       </section>
     </>
   );

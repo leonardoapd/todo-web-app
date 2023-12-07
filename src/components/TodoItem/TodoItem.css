@@ -55,3 +55,18 @@ li.app__todo-item .app__button {
     gap: 8px;
     width: 55%;
 }
+
+.app__buttons button.save-button {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.app__buttons button.delete-button {
+    background-color: var(--tertiary-color);
+    color: #fff;
+}
+
+.app__buttons button.close-button {
+    background-color: var(--secondary-color);
+    color: #fff;
+}

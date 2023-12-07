@@ -21,12 +21,11 @@
   align-items: center;
   text-decoration: none;
 
-  font-size: 1rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 400;
   color: var(--primary-color);
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Pixelify Sans', sans-serif;
   /* font-family: "Sacramento", cursive; */
-  font-variation-settings: "wdth" 120, "wght" 700;
   /* margin-left: 16px; */
   gap: 8px;
 }
@@ -35,9 +34,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* width: 100%; */
+  width: 45%;
   gap: 16px;
 }	
+
+div .navbar-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  width: 100%;
+  padding: 0.6rem;
+  text-align: center;
+}
 
 .navbar-title {
   font-size: 0.8rem;
@@ -74,6 +81,7 @@
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 .navbar-user-name {
@@ -87,4 +95,32 @@ a i.material-symbols-outlined {
   font-size: 42px !important;
   color: var(--primary-color);
   font-weight: 900;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-links {
+    width: 30%;
+  }
+
+  .navbar-options {
+    gap: 16px;
+  }
+
+  .navbar-user {
+    margin-right: 0;
+  }
+
+  .navbar-user-name {
+    font-size: 1rem;
+  }
+
+  .navbar-logout {
+    width: 20%;
+    padding: 0.8rem;
+  }
+  
 }

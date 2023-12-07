@@ -1,0 +1,24 @@
+{
+    "home_data": [
+        {
+            "description": "Manage your daily tasks with ease",
+            "image": "image1"
+        },
+        {
+            "description": "Don't forget your workout routine",
+            "image": "image2"
+        },
+        {
+            "description": "Make sure you get everything from the grocery store",
+            "image": "image3"
+        },
+        {
+            "description": "Prepare for your next trip",
+            "image": "image4"
+        },
+        {
+            "description": "And much more...",
+            "image": "image5"
+        }
+    ]
+}

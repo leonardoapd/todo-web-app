@@ -61,15 +61,15 @@ export default function Navbar() {
 			<nav ref={navbarRef} className='navbar'>
 				<Link to='/' className='navbar-logo'>
 					<i className='material-symbols-outlined'>task_alt</i>
-					TODO LIST
+					Tasky
 				</Link>
 
 				{!isLoggedIn && (
 					<div className='navbar-links'>
-						<Link to='/login' className='navbar-link'>
+						<Link to='/login' className='navbar-link app__button primary-button'>
 							Login
 						</Link>
-						<Link to='/signup' className='navbar-link'>
+						<Link to='/signup' className='navbar-link app__button secondary-button'>
 							Sign up
 						</Link>
 					</div>

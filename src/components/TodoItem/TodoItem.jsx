@@ -127,7 +127,7 @@ export default function TodoItem({ id, item, setItem, onUpdate }) {
         </label>
         {contentEditable ? (
           <div className="app__buttons">
-            <button className="app__button" onClick={handleSave} type="button">
+            <button className="app__button save-button" onClick={handleSave} type="button">
               {isMobile ? (
                 <i className="material-symbols-outlined">save</i>
               ) : (
@@ -135,7 +135,7 @@ export default function TodoItem({ id, item, setItem, onUpdate }) {
               )}
             </button>
             <button
-              className="app__button"
+              className="app__button delete-button"
               onClick={handleDelete}
               type="button"
             >
@@ -146,7 +146,7 @@ export default function TodoItem({ id, item, setItem, onUpdate }) {
               )}
             </button>
             <button
-              className="app__button"
+              className="app__button close-button"
               onClick={() => setContentEditable(false)}
               type="button"
             >

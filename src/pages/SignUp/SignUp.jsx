@@ -52,7 +52,7 @@ export default function SignUp() {
   return (
     <>
       <main className="app__main">
-        <img className="app__img" src={images.checklist_2} alt="signup" />
+        <img className="app__img" src={images['signup']} alt="signup" />
 
         <section className="app__form-container">
           <h1 className="app__title signup-title">Create an account</h1>

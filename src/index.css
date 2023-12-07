@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Quicksand:300,regular,500,600,700);
 
 :root {
   font-family: 'Quicksand', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-/* 
+  /* 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--dark-background); */
@@ -21,9 +22,9 @@
   background-color: var(--ligth-background);
 
 
-  --primary-color: #FF6B6B;
-  --secondary-color: #FFD166;
-  --tertiary-color: #06D6A0;
+  --primary-color: rgb(116,213,222);
+  --secondary-color: rgb(254,211,133);
+  --tertiary-color: rgb(253,131,105);
   --ligth-background: #F7F7F8;
   --dark-background: #242424;
   --primary-text: #333333;
