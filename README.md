@@ -31,7 +31,9 @@
 
 ## Overview
 
-![png](./todo-web-app.png)
+![png](./tasky.png)
+
+<img src="./tasky_mobile.png" width="200">
 
 Project Description:
 
