@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import { removeToken } from '../../utils/token-helper';
 import './Navbar.css';
 import UserOptions from '../UserOptions/UserOptions';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Navbar() {
 	const navigate = useNavigate();
@@ -18,6 +19,9 @@ export default function Navbar() {
 	const handleLogout = async (e) => {
 		e.preventDefault();
 		await logout().then(() => {
+			toast('See you soon!', {
+				icon: '👋',
+			});
 			onLogout();
 			removeToken();
 			setShowUserOptions(false);
@@ -40,7 +44,7 @@ export default function Navbar() {
 
 	// Agrega useEffect para añadir un manejador de eventos global que escucha clics fuera de UserOptions
 	useEffect(() => {
-		if(isLoggedIn) {
+		if (isLoggedIn) {
 			getUserInfo();
 		}
 		const handleClickOutside = (event) => {
@@ -90,6 +94,7 @@ export default function Navbar() {
 					<UserOptions userName={user?.name} userEmail={user?.email} handleLogout={handleLogout} />
 				)}
 			</nav>
+			<Toaster position='bottom-center' reverseOrder={false} />
 		</>
 	);
 }

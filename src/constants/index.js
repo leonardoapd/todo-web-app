@@ -1,2 +1,2 @@
-export { default as images } from "./images";
-export { default as errorMessages } from "./error-handling";
+export { default as images } from './images';
+export { default as errorMessages } from './error-handling';
