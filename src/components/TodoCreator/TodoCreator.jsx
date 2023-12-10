@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import TextInput from '../TextInput/TextInput';
 import { addTodo } from '../../services/todo-service';
 import { useUser } from '../../context/UserContext';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import './TodoCreator.css';
 
 export default function TodoCreator({ onUpdate }) {
@@ -78,7 +78,6 @@ export default function TodoCreator({ onUpdate }) {
 				</form>
 				{error && <p className='form-group-error'>{error}</p>}
 			</section>
-			<Toaster position='bottom-center' reverseOrder={false} />
 		</>
 	);
 }

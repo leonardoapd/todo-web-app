@@ -8,7 +8,7 @@ import TextInput from '../../components/TextInput/TextInput';
 import './Login.css';
 import { useAuth } from '../../context/AuthContext';
 import { errorMessages } from '../../constants/index';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function Login() {
 	const [formValues, setFormValues] = useState(new UserCredentials('', ''));
@@ -88,7 +88,6 @@ export default function Login() {
 					</aside>
 				</section>
 			</main>
-			<Toaster position='bottom-center' reverseOrder={false} />
 		</>
 	);
 }

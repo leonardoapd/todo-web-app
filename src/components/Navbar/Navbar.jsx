@@ -8,7 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import { removeToken } from '../../utils/token-helper';
 import './Navbar.css';
 import UserOptions from '../UserOptions/UserOptions';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function Navbar() {
 	const navigate = useNavigate();
@@ -86,15 +86,12 @@ export default function Navbar() {
 						href='#'
 						onClick={toggleUserOptions}
 					>
-						<img className='navbar-user-img' src={images.user} alt='user' />
+						<img className='navbar-user-img' src={user?.photo || images.user} alt='user' />
 					</a>
 				)}
 
-				{showUserOptions && (
-					<UserOptions userName={user?.name} userEmail={user?.email} handleLogout={handleLogout} />
-				)}
+				{showUserOptions && <UserOptions userInfo={user} handleLogout={handleLogout} />}
 			</nav>
-			<Toaster position='bottom-center' reverseOrder={false} />
 		</>
 	);
 }
