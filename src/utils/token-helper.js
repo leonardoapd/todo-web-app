@@ -10,6 +10,7 @@ function getToken() {
 
 function removeToken() {
 	localStorage.removeItem('token');
+	localStorage.clear();
 }
 
 function extractEmailFromToken() {
