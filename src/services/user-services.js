@@ -43,6 +43,7 @@ export const getUser = async () => {
 };
 
 export const updateUser = async (user) => {
+	console.log('user', user);
 	try {
 		await apiClient.put('/auth/me', user);
 	} catch (error) {
@@ -50,6 +51,17 @@ export const updateUser = async (user) => {
 		throw error;
 	}
 };
+
+export const updateUserPhoto = async (photo) => {
+	try {
+		await apiClient.patch('/auth/me/photo', {
+			photo: photo,
+		});
+	} catch (error) {
+		console.error('Error while updating user photo', error.message);
+		throw error;
+	}
+}
 
 export const githubLogin = async (code) => {
 	try {

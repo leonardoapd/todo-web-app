@@ -6,7 +6,7 @@ import { signup } from '../../services/user-services';
 import { validateForm } from '../../services/inputs-validation';
 import TextInput from '../../components/TextInput/TextInput';
 import { errorMessages } from '../../constants/index';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import './SignUp.css';
 
 export default function SignUp() {
@@ -109,7 +109,6 @@ export default function SignUp() {
 					</aside>
 				</section>
 			</main>
-			<Toaster position='bottom-center' reverseOrder={false} />
 		</>
 	);
 }
